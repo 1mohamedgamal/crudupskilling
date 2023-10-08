@@ -1,0 +1,107 @@
+<div id="sect">
+  <div class="container d-flex flex-column py-5">
+    <div class="white-background">
+      <div class="form-outline py-4 ms-5">
+        <input
+          [(ngModel)]="searchTerm"
+          type="search"
+          class="form-control align-center w-75"
+          placeholder="Search By firstname"
+          aria-label="Search"
+        />
+      </div>
+
+      <div class="d-flex justify-content-end mb-3 me-5">
+        <button
+          type="button"
+          class="btn btn-add"
+          [routerLink]="['/user']"
+          id="btn-add"
+        >
+          + Add User
+        </button>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table border-mid">
+          <thead></thead>
+          <tbody class="w-100">
+            <tr
+              *ngFor="
+                let user of Users
+                  | search : searchTerm
+                  | slice
+                    : (currentPage - 1) * itemsPerPage
+                    : (currentPage - 1) * itemsPerPage + itemsPerPage
+              "
+            >
+              <td class="table-color px-5 py-5">
+                <img
+                  [src]="user.picture"
+                  alt=""
+                  srcset=""
+                  width="100"
+                  class="shadow-4 rounded-circle"
+                />
+              </td>
+              <td class="table-color text-light px-5 py-5">
+                <h2>{{ user.title }}</h2>
+                <h3>{{ user.firstName }}</h3>
+              </td>
+              <td class="table-color px-5 py-5">
+                <div class="d-flex justify-content-between align-items-center">
+                  <button
+                    type="button"
+                    class="btn btn-danger"
+                    (click)="deleteUser(user.id)"
+                  >
+                    <i class="fa-solid fa-xl fa-trash-can"></i>
+                    <!-- Trash can icon -->
+                  </button>
+                  <button
+                    type="button"
+                    class="btn edit"
+                    (click)="updateUser(user.id)"
+                  >
+                    <span
+                      ><i class="fa-regular fa-xl fa-pen-to-square"></i
+                    ></span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <ul class="pagination justify-content-end">
+        <li class="page-item" [class.disabled]="currentPage === 1">
+          <a
+            class="page-link"
+            (click)="setPage(currentPage - 1)"
+            aria-label="Previous"
+          >
+            <span aria-hidden="true" class="fa-solid fa-chevron-left"></span>
+          </a>
+        </li>
+        <li class="page-item">
+          <span class="page-link">
+            {{ currentPage }} / {{ getPages().length }}
+          </span>
+        </li>
+        <li
+          class="page-item"
+          [class.disabled]="currentPage === getPages().length"
+        >
+          <a
+            class="page-link"
+            (click)="setPage(currentPage + 1)"
+            aria-label="Next"
+          >
+            <span aria-hidden="true" class="fa-solid fa-chevron-right"></span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

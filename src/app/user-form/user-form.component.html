@@ -1,0 +1,84 @@
+<div id="sect1">
+  <div
+    class="container vh-100 d-flex flex-column justify-content-center align-items-center"
+  >
+    <!-- Form -->
+    <form
+      [formGroup]="contactForm"
+      class="white-background p-4"
+      (ngSubmit)="SubmitForm()"
+    >
+      <!-- Avatar centered above the form -->
+      <div class="text-center mb-5">
+        <p-avatar
+          image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
+          styleClass="mr-2"
+          size="xlarge"
+          shape="circle"
+          class="avatar"
+        ></p-avatar>
+        <h1 class="upload">Upload photo</h1>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-5">
+          <span class="p-float-label">
+            <input
+              pInputText
+              formControlName="firstName"
+              id="firstName"
+              class="form-control custom-input text-center rounded rounded-4 custom-rounded"
+            />
+            <label htmlFor="firstName" class="inputText">First Name</label>
+          </span>
+        </div>
+        <div class="col-md-6 mb-5">
+          <span class="p-float-label">
+            <input
+              pInputText
+              formControlName="lastName"
+              id="lastName"
+              class="form-control text-center custom-input rounded rounded-4 custom-rounded"
+            />
+            <label htmlFor="lastName" class="inputText">Last Name</label>
+          </span>
+        </div>
+        <div class="col-md-6 mb-5">
+          <span class="p-float-label">
+            <input
+              pInputText
+              formControlName="email"
+              id="email"
+              class="form-control text-center custom-input rounded rounded-4 custom-rounded"
+            />
+            <label htmlFor="email" class="inputText">E-mail</label>
+          </span>
+        </div>
+        <div class="col-md-6 mb-5">
+          <span class="p-float-label">
+            <input
+              pInputText
+              formControlName="phone"
+              id="phone"
+              class="form-control custom-input rounded rounded-4 custom-rounded text-center"
+            />
+            <label htmlFor="phone" class="inputText">Phone</label>
+          </span>
+        </div>
+        <div class="col-md-6 mb-3">
+          <button
+            [routerLink]="['/userlist']"
+            class="btn btn-primary btn-save text-white float-left"
+          >
+            Cancel
+          </button>
+        </div>
+        <div class="col-md-6 mb-3">
+          <button class="btn btn-secondary btn-cancel text-white float-right"  >
+            Save
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
