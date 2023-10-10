@@ -1,25 +1,27 @@
 <div id="sect" class="">
   <div class="container d-flex flex-column py-5">
     <div class="white-background">
-      <div class="form-outline py-4 ms-5">
-        <input
-          [(ngModel)]="searchTerm"
-          type="search"
-          class="form-control align-center w-75 rounded-5"
-          placeholder="Search By firstname"
-          aria-label="Search"
-        />
-      </div>
+      <div class="text-align-center py-3">
+        <div class="form-outline d-flex align-items-end ms-5 py-3">
+          <input
+            [(ngModel)]="searchTerm"
+            type="search"
+            class="form-control w-75 rounded-5"
+            placeholder="Search By firstname"
+            aria-label="Search"
+          />
+        </div>
 
-      <div class="d-flex justify-content-end mb-3 me-5">
-        <button
-          type="button"
-          class="btn btn-add rounded-5 w-25"
-          [routerLink]="['/user']"
-          id="btn-add"
-        >
-          <i class="fa-solid fa-plus"></i> Add Contact
-        </button>
+        <div class="d-flex justify-content-between mt-3 ms-5">
+          <button
+            type="button"
+            class="btn btn-add rounded-5 w-25 float-end"
+            [routerLink]="['/user']"
+            id="btn-add"
+          >
+            <i class="fa-solid fa-plus"></i> Add Contact
+          </button>
+        </div>
       </div>
 
       <div class="table-responsive">
@@ -35,7 +37,9 @@
                     : (currentPage - 1) * itemsPerPage + itemsPerPage
               "
             >
-              <td class="table-color px-5 py-5 col-12 col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+              <td
+                class="table-color px-5 py-5 col-12 col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2"
+              >
                 <!-- Image column -->
                 <img
                   [src]="user.picture"
@@ -89,7 +93,7 @@
             aria-label="Previous"
           >
             <span aria-hidden="true" class="fa-solid fa-chevron-left"></span>
-          </a>  
+          </a>
         </li>
         <li class="page-item">
           <span class="page-link">
@@ -113,4 +117,6 @@
   </div>
 </div>
 
-<p-confirmDialog [style]="{ 'width': '20vw', 'border-radius': '200px' , 'height':'50%' }"></p-confirmDialog>
+<p-confirmDialog
+  [style]="{ width: '25vw', 'border-radius': '200px', height: '50%' }"
+></p-confirmDialog>
