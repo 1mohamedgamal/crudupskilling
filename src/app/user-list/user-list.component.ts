@@ -65,7 +65,7 @@ export class UserListComponent implements OnInit {
           this.GetAllUsers();
         });
       },
-      reject: (type :any) => {
+      reject: (type: any) => {
         switch (type) {
           case ConfirmEventType.REJECT:
             this.messageService.add({
