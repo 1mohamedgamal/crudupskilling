@@ -5,7 +5,7 @@
         <input
           [(ngModel)]="searchTerm"
           type="search"
-          class="form-control align-center w-75 rounded-5"
+          class="form-control align-center w-75"
           placeholder="Search By firstname"
           aria-label="Search"
         />
@@ -14,11 +14,11 @@
       <div class="d-flex justify-content-end mb-3 me-5">
         <button
           type="button"
-          class="btn btn-add rounded-5 w-25"
+          class="btn btn-add"
           [routerLink]="['/user']"
           id="btn-add"
         >
-          <i class="fa-solid fa-plus "></i> Add Contact
+          + Add User
         </button>
       </div>
 
@@ -35,7 +35,9 @@
                     : (currentPage - 1) * itemsPerPage + itemsPerPage
               "
             >
-              <td class="table-color px-5 py-5 col-12 col-md-6 col-lg-4">
+              <td
+                class="table-color px-5 py-5 col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2"
+              >
                 <!-- Image column -->
                 <img
                   [src]="user.picture"
@@ -46,30 +48,32 @@
                 />
               </td>
               <td
-                class="table-color text-light px-5 py-5 col-12 col-md-6 col-lg-4"
+                class="table-color text-light px-5 py-5 col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2"
               >
                 <!-- Title and first name column -->
                 <h2>{{ user.title }}</h2>
                 <h3>{{ user.firstName }}</h3>
               </td>
-              <td class="table-color px-5 py-5 col-12 col-md-6 col-lg-4">
+              <td
+                class="table-color px-5 py-5 col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2"
+              >
                 <!-- Action buttons column -->
                 <div class="d-flex justify-content-between align-items-center">
                   <button
                     type="button"
-                    class="p-button p-button-sm"
+                    class="btn btn-danger btn-sm"
+                    (click)="deleteUser(user.id)"
+                  >
+                    <i class="fa-solid fa-xl fa-trash-can"></i>
+                  </button>
+                  <button
+                    type="button"
+                    class="btn edit btn-sm"
                     (click)="updateUser(user.id)"
                   >
                     <span
                       ><i class="fa-regular fa-xl fa-pen-to-square"></i
                     ></span>
-                  </button>
-                  <button
-                    type="button"
-                    class="p-button p-button-danger p-button-sm py-4 text-white"
-                    (click)="deleteUser(user.id)"
-                  >
-                    <i class="fa-solid fa-xl fa-trash-can"></i>
                   </button>
                 </div>
               </td>
@@ -109,5 +113,3 @@
     </div>
   </div>
 </div>
-
-<p-confirmDialog [style]="{ width: '50vw' }"></p-confirmDialog>

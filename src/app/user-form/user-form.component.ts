@@ -12,6 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class UserFormComponent implements OnInit {
   Users: Users[] = [];
+  avatarPreview: string | ArrayBuffer | null | undefined;
   constructor(
     private _UserService: UsersService,
     private fb: FormBuilder,
@@ -24,6 +25,7 @@ export class UserFormComponent implements OnInit {
     email: new FormControl(null),
     lastName: new FormControl(null),
     phone: new FormControl(null),
+    picture: new FormControl(null),
   });
 
   userId!: string;
@@ -89,8 +91,21 @@ export class UserFormComponent implements OnInit {
                alert("error occured");
 
             });
-    }
+    
+          }
 
 
+
+
+  } handleAvatarUpload(event: any) {
+       const file = event.target.files[0];
+       if (file) {
+         // Read and set the selected image as the preview
+         const reader = new FileReader();
+         reader.onload = (e) => {
+           this.avatarPreview = e.target?.result;
+         };
+         reader.readAsDataURL(file);
+       }
   }
 }

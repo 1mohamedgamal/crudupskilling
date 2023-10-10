@@ -15,7 +15,6 @@ export class UserListComponent implements OnInit {
   Users: Users[] = [];
   searchTerm: string = ''; // Search term variable
 
-  // Pagination settings
   currentPage: number = 1; // Current page number
   itemsPerPage: number = 2; // Number of items per page
 
@@ -51,7 +50,6 @@ export class UserListComponent implements OnInit {
   }
 
   deleteUser(id: string) {
-    // Display a confirmation dialog using PrimeNG ConfirmationService
     this.confirmationService.confirm({
       message: 'Are you sure that you want to delete this user?',
       header: 'Confirmation',
@@ -73,7 +71,7 @@ export class UserListComponent implements OnInit {
             this.messageService.add({
               severity: 'error',
               summary: 'Rejected',
-              detail: 'You have rejected',
+              detail: 'You cancel this ',
             });
             break;
           case ConfirmEventType.CANCEL:
