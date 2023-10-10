@@ -15,7 +15,10 @@ import { ListComponent } from './list/list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TableModule } from 'primeng/table';
 import { SearchPipe } from './search.pipe';
-
+import { DialogModule } from 'primeng/dialog';
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
+import { ToastModule } from 'primeng/toast';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +30,7 @@ import { SearchPipe } from './search.pipe';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule, // Add FormsModule here
+    FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     ButtonModule,
@@ -35,6 +38,10 @@ import { SearchPipe } from './search.pipe';
     AvatarGroupModule,
     HttpClientModule,
     TableModule,
+    DialogModule,
+    ConfirmPopupModule,
+    ToastModule,
+    ConfirmDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
