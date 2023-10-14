@@ -1,11 +1,8 @@
-
 #sect1 {
-
   background-size: cover;
   height: 100%;
   color: white;
-  display: flex;
-  align-items: center;
+
   background-image: url("../../assets/images/background.jfif");
 }
 
@@ -59,8 +56,12 @@
   width: 109px;
   height: 106px;
   flex-shrink: 0;
-}.search {
+}
+.search {
   width: 946px;
-height: 45px;
-flex-shrink: 0;
+  height: 45px;
+  flex-shrink: 0;
+}
+.right{
+  margin-right: 50px;
 }

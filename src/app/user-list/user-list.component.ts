@@ -52,8 +52,10 @@ export class UserListComponent implements OnInit {
   deleteUser(id: string) {
     this.confirmationService.confirm({
       message: 'Are you sure that you want to delete this user?',
+
       header: 'Confirmation',
       icon: 'pi pi-exclamation-triangle',
+
       accept: () => {
         // User confirmed, perform the delete operation here
         this._UserService.deleteUser(id).subscribe((data) => {

@@ -1,25 +1,34 @@
 <div id="sect1">
-  <div class="container vh-100 d-flex flex-column justify-content-center align-items-center">
+  <div
+    class="container vh-100 d-flex flex-column justify-content-center align-items-center"
+  >
     <!-- Form -->
-    <form [formGroup]="contactForm" class="white-background p-4" (ngSubmit)="SubmitForm()">
+    <form
+      [formGroup]="contactForm"
+      class="white-background p-4"
+      (ngSubmit)="SubmitForm()"
+    >
       <!-- Avatar centered above the form -->
       <div class="text-center mb-5" (click)="avatarInput.click()">
         <!-- Image preview -->
         <img
-          [src]="avatarPreview || 'https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png'"
+          [src]="
+            avatarPreview ||
+            'https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png'
+          "
           alt="Avatar Preview"
           width="100"
           height="100"
-          class="avatar-preview "
+          class="avatar-preview rounded-circle"
         />
         <h1 class="upload">Upload photo</h1>
 
         <!-- Hidden file input -->
         <input
-        class="form-control"
+          class="form-control"
           type="file"
           #avatarInput
-          style="display: none;"
+          style="display: none"
           (change)="handleAvatarUpload($event)"
         />
       </div>
@@ -70,7 +79,10 @@
           </span>
         </div>
         <div class="col-md-6 mb-3">
-          <button [routerLink]="['/userlist']" class="btn btn-primary btn-save text-white float-left">
+          <button
+            [routerLink]="['/userlist']"
+            class="btn btn-primary btn-save text-white float-left"
+          >
             Cancel
           </button>
         </div>

@@ -1,25 +1,25 @@
 <div id="sect" class="">
-  <div class="container d-flex flex-column py-5">
+  <div class="container d-flex flex-column">
     <div class="white-background">
-      <div class="text-align-center py-3">
-        <div class="form-outline d-flex align-items-end ms-5 py-3">
+      <div class="py-5">
+        <div class="form-outline d-flex justify-content-center">
           <input
             [(ngModel)]="searchTerm"
             type="search"
-            class="form-control w-75 rounded-5"
+            class="form-control w-75 ms-5 rounded-5"
             placeholder="Search By firstname"
             aria-label="Search"
           />
         </div>
 
-        <div class="d-flex justify-content-between mt-3 ms-5">
+        <div class="d-flex justify-content-end mt-3 ms-5">
           <button
             type="button"
-            class="btn btn-add rounded-5 w-25 float-end"
+            class="btn btn-add rounded-5 me-5 m-2 rounded-5 float-end"
             [routerLink]="['/user']"
             id="btn-add"
           >
-            <i class="fa-solid fa-plus"></i> Add Contact
+            <i class="fa-solid fa-lg fa-plus m-3"></i> Add Contact
           </button>
         </div>
       </div>
@@ -27,7 +27,7 @@
       <div class="table-responsive">
         <table class="table border-mid">
           <thead></thead>
-          <tbody class="w-100">
+          <tbody class="w-100 justify-content-center">
             <tr
               *ngFor="
                 let user of Users
@@ -46,37 +46,38 @@
                   alt=""
                   srcset=""
                   width="100"
-                  class="shadow-4 rounded-circle"
+                  class="shadow-4 ms-5 rounded-circle"
                 />
               </td>
-              <td
-                class="table-color text-light px-5 py-5 col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2"
+              <div
+                class="table-color text-light py-5 col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2"
               >
-                <!-- Title and first name column -->
-                <h2>{{ user.title }}</h2>
+                <h2>{{ user.lastName }}</h2>
                 <h3>{{ user.firstName }}</h3>
-              </td>
+              </div>
+
               <td
-                class="table-color px-5 py-5 col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2"
+                class="table-color col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2"
               >
                 <!-- Action buttons column -->
-                <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex py-4 justify-content-end me-5">
                   <button
                     type="button"
-                    class="p-button p-button-sm"
+                    class="btn bg-light m-4 p-2 rounded-2"
                     (click)="updateUser(user.id)"
                   >
-                    <span
-                      ><i class="fa-regular fa-xl fa-pen-to-square"></i
-                    ></span>
+                    <i
+                      class="fa-solid fa-pen-to-square"
+                      style="color: #1bb0f0"
+                    ></i>
                   </button>
                   <p-toast [life]="300000"> </p-toast>
                   <button
                     type="button"
-                    class="p-button p-button-danger p-button-sm py-4 text-white"
+                    class="btn bg-light m-4 p-2 rounded-2"
                     (click)="deleteUser(user.id)"
                   >
-                    <i class="fa-solid fa-xl fa-trash-can"></i>
+                    <i class="fa-solid fa-trash-can" style="color: #ec1b1b"></i>
                   </button>
                 </div>
               </td>
@@ -98,7 +99,7 @@
         <li class="page-item">
           <span class="page-link">
             {{ currentPage }} / {{ getPages().length }}
-             <!-- push -->
+            <!-- push -->
           </span>
         </li>
         <li
