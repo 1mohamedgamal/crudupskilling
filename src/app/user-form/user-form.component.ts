@@ -17,7 +17,7 @@ export class UserFormComponent implements OnInit {
     private _UserService: UsersService,
     private fb: FormBuilder,
     private activatedRoute: ActivatedRoute,
-    private router:Router
+    private router: Router
   ) {}
 
   contactForm: FormGroup = new FormGroup({
@@ -34,7 +34,7 @@ export class UserFormComponent implements OnInit {
       firstName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       lastName: [null, Validators.required],
-      phone:[null,[Validators.required]]
+      phone: [null, [Validators.required, Validators.pattern(/^[0-9]{10}$/)]],
     });
 
     console.log(this.activatedRoute.snapshot.params['id']);
@@ -63,49 +63,40 @@ export class UserFormComponent implements OnInit {
     console.log(this.contactForm.value);
 
     if (this.userId) {
-
-        this._UserService.UpdateUser(this.contactForm.value,this.userId).subscribe((result)=>{
-              console.log(result)
-             this.router.navigate(['/userlist'])
-               
-             },
-             (err)=> {
-              alert('error occured');
-
-             },
-        )
-
-
-    } else {
-
-
-          this._UserService
-            .addUser(this.contactForm.value)
-            .subscribe((user) => {
-              this.contactForm.reset();
-              console.log(user);
-              alert('added successfully');
-             this.router.navigate(['/']);
-
-            },(err)=>{
-               alert("error occured");
-
-            });
-    
+      this._UserService
+        .UpdateUser(this.contactForm.value, this.userId)
+        .subscribe(
+          (result) => {
+            console.log(result);
+            this.router.navigate(['/userlist']);
+          },
+          (err) => {
+            alert('error occured');
           }
-
-
-
-
-  } handleAvatarUpload(event: any) {
-       const file = event.target.files[0];
-       if (file) {
-         // Read and set the selected image as the preview
-         const reader = new FileReader();
-         reader.onload = (e) => {
-           this.avatarPreview = e.target?.result;
-         };
-         reader.readAsDataURL(file);
-       }
+        );
+    } else {
+      this._UserService.addUser(this.contactForm.value).subscribe(
+        (user) => {
+          this.contactForm.reset();
+          console.log(user);
+          alert('added successfully');
+          this.router.navigate(['/']);
+        },
+        (err) => {
+          alert('error occured');
+        }
+      );
+    }
+  }
+  handleAvatarUpload(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      // Read and set the selected image as the preview
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        this.avatarPreview = e.target?.result;
+      };
+      reader.readAsDataURL(file);
+    }
   }
 }
